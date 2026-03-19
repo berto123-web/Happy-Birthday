@@ -231,7 +231,7 @@ const timelineItems = [
 const TARGET_YEAR = 2026;
 const TARGET_MONTH = 3;
 const TARGET_DAY = 25;
-const FORCE_FULL_MODE = true;
+const FORCE_FULL_MODE = false;
 
 const PLAYLIST = [aphroditeTrack, beWithYouTrack, loveIsTrack];
 const PREVIEW_IMAGES = [firstPreview, secondPreview, thirdPreview];
