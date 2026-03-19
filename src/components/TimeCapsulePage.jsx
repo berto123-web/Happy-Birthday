@@ -231,7 +231,7 @@ const timelineItems = [
 const TARGET_YEAR = 2026;
 const TARGET_MONTH = 3;
 const TARGET_DAY = 25;
-const FORCE_FULL_MODE = false;
+const FORCE_FULL_MODE = true;
 
 const PLAYLIST = [aphroditeTrack, beWithYouTrack, loveIsTrack];
 const PREVIEW_IMAGES = [firstPreview, secondPreview, thirdPreview];
@@ -288,7 +288,19 @@ function TimeCapsulePage() {
     const playPromise = audioEl.play();
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch(() => {
+        // Browser blocked autoplay — wait for first user interaction then start
         setIsPlaying(false);
+        const startOnInteraction = () => {
+          audioEl.play().then(() => {
+            setIsPlaying(true);
+          }).catch(() => {});
+          document.removeEventListener("click", startOnInteraction);
+          document.removeEventListener("touchstart", startOnInteraction);
+          document.removeEventListener("keydown", startOnInteraction);
+        };
+        document.addEventListener("click", startOnInteraction, { once: true });
+        document.addEventListener("touchstart", startOnInteraction, { once: true });
+        document.addEventListener("keydown", startOnInteraction, { once: true });
       });
     }
   }, [currentTrackIndex, isPlaying]);
