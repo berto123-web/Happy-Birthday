@@ -380,7 +380,7 @@ function TimeCapsulePage() {
                     not with you physically, my love and memories are always
                     with you. I want you to feel my presence and love through
                     these moments captured in time. So enjoy this Birthday
-                    Capsule that I've prepared for you.
+                    Capsule that I've prepared for you. Balik ka nalang sa birthday mo hehehe teaser palang ito. I love you!
                   </p>
                   <div className="preview-strip">
                     {PREVIEW_IMAGES.map((imageSrc, index) => (

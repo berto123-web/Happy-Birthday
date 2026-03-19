@@ -2,6 +2,9 @@ import CountdownTimer from './CountdownTimer'
 import heroVideo from '../asset/vid/lv_7458231180102536501_20260319204132.mp4?url'
 
 function HeroSection({ recipientName, isUnlocked, targetYear, targetMonth, targetDay }) {
+  const lockedTitle = 'This is my special surprise for you my love'
+  const unlockedTitle = `HAPPY BIRTHDAY, ${recipientName.toUpperCase()}.`
+
   return (
     <header className="hero-section">
       <div className="hero-photo" aria-label="Hero backdrop with candid video memory card">
@@ -10,7 +13,7 @@ function HeroSection({ recipientName, isUnlocked, targetYear, targetMonth, targe
       <div className="hero-overlay">
         <div className="hero-content">
           <div className="hero-text">
-            <h1>HAPPY BIRTHDAY, {recipientName.toUpperCase()}.</h1>
+            <h1>{isUnlocked ? unlockedTitle : lockedTitle}</h1>
             {isUnlocked ? (
               <div className="countdown countdown-unlocked">
                 <div className="countdown-grid">
