@@ -601,16 +601,14 @@
   }
 }
 
+/* ── 1080px – wider monitor ── */
 @media (max-width: 1080px) {
-  .timeline-wrap {
-    min-height: 1380px;
-  }
-
   .timeline-card {
     width: min(72vw, 420px);
   }
 }
 
+/* ── 900px – tablet ── */
 @media (max-width: 900px) {
   .scene {
     padding: 12px;
@@ -629,27 +627,236 @@
     align-items: flex-start;
   }
 
+  .hero-text {
+    max-width: 100%;
+  }
+
   .candid-video-card {
-    width: min(100%, 420px);
+    width: min(100%, 480px);
   }
 
-  .timeline-wrap {
-    min-height: 1520px;
+  .timeline-section {
+    padding: 40px 16px 80px;
   }
 
-  .timeline-spine,
+  .timeline-spine {
+    left: 32px;
+    transform: none;
+  }
+
   .timeline-node {
     left: 32px;
     transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
   }
 
   .timeline-card.left,
   .timeline-card.right {
-    left: 84px;
+    left: 76px;
     right: auto;
+    width: calc(100% - 84px);
   }
 
   .preview-strip {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── 640px – phones / small tablets ── */
+@media (max-width: 640px) {
+  /* Strip the monitor chrome — just show the web page */
+  .scene {
+    padding: 0;
+    min-height: 100svh;
+  }
+
+  .ambient-light,
+  .desk-surface,
+  .monitor-stand {
+    display: none;
+  }
+
+  .monitor-shell {
+    width: 100%;
+  }
+
+  .monitor-bezel {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .monitor-screen {
+    height: auto;
+    min-height: 100svh;
+    border-radius: 0;
+    border: none;
+    overflow: visible;
+  }
+
+  .website-scroll {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  /* Now-playing floats fixed so it doesn't scroll away */
+  .now-playing {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 10px;
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    min-height: 55vh;
+  }
+
+  .hero-overlay {
+    min-height: 55vh;
+    padding: 28px 18px 32px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(1.35rem, 6.2vw, 2.2rem);
+  }
+
+  .candid-video-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .photo-glow {
+    width: 140px;
+  }
+
+  /* ── Countdown ── */
+  .countdown {
+    padding: 10px 12px;
+  }
+
+  .countdown-grid {
+    font-size: clamp(0.95rem, 4.5vw, 1.4rem);
+    gap: 6px;
+  }
+
+  /* ── Preview ── */
+  .preview-section {
+    padding: 36px 20px 52px;
+  }
+
+  .preview-card {
+    height: 200px;
+  }
+
+  /* ── Timeline ── */
+  .timeline-section {
+    padding: 36px 10px 52px;
+  }
+
+  /* Spine: thin left-edge line */
+  .timeline-spine {
+    left: 33px;        /* centered on the 62px node at left:4px */
+    transform: none;
+    width: 3px;
+  }
+
+  /* Node: absolute, anchored to top-left of row */
+  .timeline-node {
+    position: absolute;
+    left: 4px;
+    top: 14px;
+    transform: none;
+    width: 62px;
+    height: 62px;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* Row: normal-flow height — content drives the height, no overlap */
+  .timeline-row {
+    min-height: unset;
+    padding: 14px 0 24px 76px; /* 4 (node left) + 62 (node width) + 10 (gap) */
+    position: relative;
+  }
+
+  /* Cards flow in the document — no absolute positioning on mobile */
+  .timeline-card.left,
+  .timeline-card.right {
+    position: static;
+    width: 100%;
+    left: auto;
+    right: auto;
+    top: auto;
+  }
+
+  .timeline-card {
+    padding: 10px 12px 12px;
+  }
+
+  .timeline-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .timeline-card p {
+    font-size: 0.95rem;
+  }
+
+  .frame-media {
+    height: 130px;
+  }
+
+  /* ── Final message card ── */
+  .message-card {
+    padding: 22px 18px;
+    margin: 40px auto 0;
+  }
+
+  .message-card h3 {
+    font-size: clamp(1.25rem, 5.5vw, 2rem);
+  }
+
+  .message-card p {
+    font-size: 1rem;
+  }
+}
+
+/* ── 400px – very tight phones ── */
+@media (max-width: 400px) {
+  .hero-overlay h1 {
+    font-size: clamp(1.15rem, 7vw, 1.8rem);
+  }
+
+  .countdown-grid {
+    font-size: clamp(0.85rem, 5vw, 1.2rem);
+    gap: 4px;
+  }
+
+  .timeline-node {
+    left: 2px;
+    width: 52px;
+    height: 52px;
+    font-size: 0.6rem;
+    top: 14px;
+  }
+
+  .timeline-spine {
+    left: 27px;   /* 2 + 52/2 - 3/2 */
+  }
+
+  .timeline-row {
+    padding-left: 62px; /* 2 + 52 + 8 */
   }
 }
